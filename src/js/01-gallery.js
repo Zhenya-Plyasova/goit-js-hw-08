@@ -12,18 +12,13 @@ const galleryMarkup = galleryItems.map(({preview, original, description}) =>`<a 
 
 galleryBox.innerHTML=galleryMarkup;
 
-galleryBox.addEventListener("click", showBigPicture);
-function showBigPicture(event){
-    // if (event.target.nodeName !== "IMG"){
-    // return;
-    // }
-    // event.preventDefault();
-
-    let gallery = new SimpleLightbox('.gallery a', {
+let gallery = new SimpleLightbox('.gallery a', {
 
     captionsData: "alt",
     captionDelay: 250,
 
 });
 
+galleryBox.addEventListener("click", showBigPicture);
+function showBigPicture(event){
 }
