@@ -19,8 +19,11 @@ function clearForm(event){
     event.preventDefault();
     event.currentTarget.reset();
     
+    if (localStorage.getItem(STORAGE_KEY)){
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
-
+    } else {
+        console.log("{email: '', message: ''}");
+    }
 };
 function fillForm(){
     const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
