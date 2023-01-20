@@ -17,12 +17,13 @@ function saveCurrentValues(event){
 feedbackForm.addEventListener("submit", clearForm);
 function clearForm(event){
     event.preventDefault();
-    event.currentTarget.reset();
-    
-    if (localStorage.getItem(STORAGE_KEY)){
-    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
-    } else {
-        console.log("{email: '', message: ''}");
+    const {elements: {email, message}
+    }=event.currentTarget;
+    if (email.value==="" ||message.value===""){
+    alert("Заповніть, будь ласка, всі поля форми!");}
+    else{
+        event.currentTarget.reset();
+        console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
     }
 };
 function fillForm(){
