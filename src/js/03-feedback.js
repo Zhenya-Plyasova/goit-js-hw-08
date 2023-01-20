@@ -10,13 +10,16 @@ fillForm();
 feedbackForm.addEventListener("input", throttle(saveCurrentValues, 500));
 
 function saveCurrentValues(event){
-    formData[event.target.name]=event.target.value;
-
+    // formData[event.target.name]=event.target.value;
+    formData.email=emailData.value;
+    formData.message=messageData.value;
+   
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 feedbackForm.addEventListener("submit", clearForm);
 function clearForm(event){
     event.preventDefault();
+
     const {elements: {email, message}
     }=event.currentTarget;
     if (email.value==="" ||message.value===""){
@@ -24,7 +27,9 @@ function clearForm(event){
     else{
         event.currentTarget.reset();
         console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+        localStorage.clear();
     }
+
 };
 function fillForm(){
     const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
